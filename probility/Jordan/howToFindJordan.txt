@@ -1,0 +1,27 @@
+Để tìm các giá trị riêng và vector riêng của một ma trận bằng thư viện `SymPy` thay vì `NumPy`, bạn cần sử dụng cách tiếp cận khác với `SymPy`. Dưới đây là một ví dụ về cách tìm các giá trị riêng và vector riêng của một ma trận A bằng sử dụng `SymPy`:
+
+```python
+from sympy import Matrix
+
+# Khai báo ma trận A
+A = Matrix([[1, 2], [3, 4]])
+
+# Tính các giá trị riêng và vector riêng của A
+eigenvalues = A.eigenvals()
+eigenvectors = A.eigenvects()
+
+print("Các giá trị riêng của ma trận A:")
+print(eigenvalues)
+print("\nCác vector riêng tương ứng:")
+print(eigenvectors)
+```
+
+Trong đoạn mã trên:
+- `from sympy import Matrix`: Import lớp `Matrix` từ thư viện SymPy.
+- `A = Matrix([[1, 2], [3, 4]])`: Khai báo ma trận A bằng cách sử dụng lớp `Matrix` của SymPy.
+- `A.eigenvals()`: Sử dụng phương thức `eigenvals()` để tính các giá trị riêng của ma trận A.
+- `A.eigenvects()`: Sử dụng phương thức `eigenvects()` để tính các vector riêng tương ứng với các giá trị riêng.
+- `print(eigenvalues)`: In ra các giá trị riêng của ma trận A.
+- `print(eigenvectors)`: In ra các vector riêng tương ứng với các giá trị riêng.
+
+Lưu ý rằng cách tiếp cận này sử dụng thư viện `SymPy` thay vì `NumPy` để tính toán các giá trị riêng và vector riêng của ma trận.

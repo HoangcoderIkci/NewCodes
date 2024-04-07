@@ -569,6 +569,48 @@ void SupportProcess2(U32 trustTable, U32 *length)
     // printf("%d %d \n", count, c);
     // printf("length %d \n", *length);
 }
+
+// newfunction
+void SupportProcessNew(U32 trustTable, U32 *length)
+{
+    // tạo mảng
+    U32 alpha;
+    U32 res;
+    U32 flag, count = 0;
+    // U32 matrix[size];
+    U32 c = 0;
+    // Arr_res[0] = trustTable;
+    // lặp tất cả các ma trận nghịch đảo
+    U32 minDistance = 1000000;
+    loop(i_col, 0, (1 << size))
+    {
+        loop(i, 0, count_per)
+        {
+            // lấy matrix
+
+            res = 0;
+            loop(t, 0, (1 << size)) // Biến đổi trustTable
+            {
+                alpha = mulRơwWithMatrix(Arrangement_global[i], t, size, size);
+                alpha ^= i_col;
+                res += alpha & 1;
+            }
+            if (res >= MAX_COUNT_FUNC)
+            {
+                printf("Error \n");
+            }
+            if (arrStatusFunction[res] == true)
+            {
+                (*length)++;
+                arrStatusFunction[res] = false;
+            }
+        }
+    }
+    // printf("%d %d \n", count, c);
+    // printf("length %d \n", *length);
+}
+// end newfunction
+
 // Hàm này thực thi lặp hết các function
 // check xem fuction đã trong nhóm nào chưa ? Nếu chưa thì chạy hàm supportProcess để tạo nhóm cho nó.
 void mainProcess()
@@ -695,7 +737,7 @@ int main()
     {
         Arrangement_global[i] = (U32 *)malloc(size * sizeof(U32));
     }
-    // mainProcess();
+    mainProcess();
     U32 func = 100;
     tim_class_func(func);
     // free(Arrangement_global_supper); // Giải phóng mảng chính

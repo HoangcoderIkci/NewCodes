@@ -6,7 +6,7 @@ import numpy as np
 
 # Global variables
 p = 2
-n = 4
+n = 2
 gSizeRing = p **n
 # Function :
 def UCLN_u_v_in_MOD(A, B, MOD):
@@ -190,7 +190,8 @@ def tt():
     print()
 if __name__ == '__main__':
     tt()
-    Phi = [12, 5, 13, 6, 14, 7, 15, 0, 8, 1, 9, 2, 10, 3, 11, 4]
+    Phi = [4, 12, 5, 13, 6, 14, 7, 15, 0, 8, 1, 9, 2, 10, 3, 11]
+    Phi = [0,0,1,0]
     print(Phi)
     printTablePhi2(Phi)
     # for j in range(gSizeRing):

@@ -104,7 +104,7 @@ def decomposeBinaFunc(lst_coefficients : list,num_variables : int,k):
             break
         id_not_null +=1
     # tìm hệ số của h(x) БПФ
-    lst_h_x = findCoefficients(trust_table_h_x)
+    lst_h_x = findCoefficientsZhegalkin (trust_table_h_x)
     print("he so của h(x) :")
     print(lst_h_x)
     # tifm F0 F1
@@ -123,13 +123,13 @@ def decomposeBinaFunc(lst_coefficients : list,num_variables : int,k):
     for row in table_values:
         col_idx_F_1.append(row[idx_F_1])
         
-    lst_F_0 = findCoefficients(col_idx_F_0)
+    lst_F_0 = findCoefficientsZhegalkin (col_idx_F_0)
     print("he so của F0(x) :")
     print(lst_F_0)
-    lst_F_1 = findCoefficients(col_idx_F_1)
+    lst_F_1 = findCoefficientsZhegalkin (col_idx_F_1)
     print("he so của F1(x) :")
     print(lst_F_1)
-def findCoefficients(lst_coefficients : list):
+def findCoefficientsZhegalkin (lst_coefficients : list):
     length = len(lst_coefficients)
     k = int(log2(length))
     res = [x for x in lst_coefficients]
@@ -154,4 +154,4 @@ input_list = [[0,0,0,1,0,0],[0,0,0,1,1,0],[0,0,0,1,1,1],[0,0,1,0,0,1],[0,0,1,0,1
 
 lst = [1,1,0,0,0,0,1,0]
 
-print(findCoefficients(lst))
+print(findCoefficientsZhegalkin (lst))

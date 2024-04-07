@@ -4,7 +4,7 @@ DEGREE = 4  # bậc đa thức f
 LIMIT = 0  # dùng cho hàm dịch bit vòng ; với t = 4 tương ứng với 0b1111 = 0xF
 hsPole = 19  # tương ứng với x^4 + x + 1
 g_r = 1
-#hsPole = 285; # x8 + x4 + x3 + x2 + 1
+# hsPole = 283; # x8 + x4 + x3 + x + 1
 
 
 arrMultiple = [[0 for _ in range(SIZEPOLE)] for _ in range(SIZEPOLE)]
@@ -163,8 +163,8 @@ changeLimit(DEGREE)  ## chỉnh sửa lại LIMIT = số lượng bit cần dùn
 change_r(3)
 #printTables()
 # for b in range(17):
-lst_val_func = createTable(b=9)
-
+lst_val_func = createTable(b=8)
+print(ArrayPowerSupport)
 #NEw code 
 # l_temp_c = []
 # ls_s_hs = [0, 1, 4, 9, 0, 9, 4, 1, 0, 1, 4, 9, 0, 9, 4, 1]
@@ -175,7 +175,7 @@ lst_val_func = createTable(b=9)
 
 
 print(lst_val_func)
-lst_magma = [1,7,14,13,0,5,8,3,4,15,10,6,9,12,11,2]
+lst_magma = []
 #     if len(set(lst_val_func)) != 16:
 #         print("error")
 lst_res = findCoefficientFunctionVersion2(lst_magma)

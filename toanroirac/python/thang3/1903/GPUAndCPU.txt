@@ -1,0 +1,49 @@
+### Sự Khác Biệt Giữa CPU và GPU
+
+Trong thế giới của máy tính, CPU (Central Processing Unit) và GPU (Graphics Processing Unit) đều là những thành phần quan trọng, mỗi loại có chức năng và ưu nhược điểm riêng. Dưới đây là một cái nhìn tổng quan về sự khác biệt giữa CPU và GPU, cũng như ưu nhược điểm của chúng.
+
+#### CPU: Trái Tim của Máy Tính
+
+**Chức năng:** CPU, hay bộ vi xử lý trung tâm, được coi là trái tim của máy tính. Nó chịu trách nhiệm thực hiện các lệnh của chương trình máy tính bằng cách thực hiện các tác vụ cơ bản như toán học, logic, quản lý dữ liệu và input/output (I/O).
+
+**Ưu điểm:**
+- **Đa năng:** Có thể xử lý hầu hết mọi loại tác vụ máy tính.
+- **Thực hiện tốt các tác vụ tuần tự:** Hiệu quả cao trong việc xử lý các tác vụ tuần tự và phức tạp.
+
+**Nhược điểm:**
+- **Giới hạn trong xử lý song song:** Không hiệu quả bằng GPU khi thực hiện các tác vụ đòi hỏi xử lý song song lớn.
+
+#### GPU: Chuyên Gia Xử Lý Đồ Họa
+
+**Chức năng:** GPU được thiết kế để xử lý các tác vụ đồ họa và video. Nó làm điều này bằng cách thực hiện hàng nghìn hoặc hàng triệu tác vụ nhỏ cùng một lúc, chủ yếu liên quan đến toán học và đồ họa.
+
+**Ưu điểm:**
+- **Xử lý song song mạnh mẽ:** Có khả năng xử lý hàng nghìn tác vụ cùng một lúc, làm cho chúng hoàn hảo cho việc xử lý đồ họa và các tác vụ tính toán song song khác.
+- **Tối ưu cho đồ họa và AI:** GPU được sử dụng rộng rãi trong việc render đồ họa, thực tế ảo, và gần đây là học sâu và trí tuệ nhân tạo.
+
+**Nhược điểm:**
+- **Ít linh hoạt:** Mặc dù mạnh mẽ cho các tác vụ cụ thể, GPU không thích hợp cho các loại xử lý tuần tự hoặc phức tạp như CPU.
+- **Chi phí:** GPU có thể đắt hơn so với CPU, đặc biệt là các model cao cấp được thiết kế cho gaming hoặc AI.
+
+#### Kết Luận
+
+Trong khi CPU là bộ não đa năng có khả năng thực hiện đa dạng các loại tác vụ máy tính, GPU lại chuyên sâu vào xử lý đồ họa và các tác vụ tính toán song song. Lựa chọn giữa CPU và GPU phụ thuộc vào nhu cầu cụ thể của ứng dụng hoặc dự án. Trong nhiều trường hợp, sự kết hợp giữa cả hai sẽ mang lại hiệu suất tối ưu, với CPU xử lý logic và quản lý dữ liệu, trong khi GPU đảm nhận các tác vụ đồ họa và tính toán song song.
+
+
+
+
+0,1,0,1,0,0,1,0,0,1,1,0,1,0,0,1,
+0,1,0,0,0,0,1,0,0,1,1,0,1,0,0,1,
+0,1,0,0,0,1,1,0,0,1,1,0,1,0,0,1,
+0,1,0,0,0,1,1,0,0,0,1,0,1,1,1,1
+
+[0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1]
+[0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0]
+[0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0]
+[0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0]
+
+
+
+Thời gian thực thi giai đoạn 1: 2.857000 giây
+
+Thời gian thực thi giai đoạn 1: 56.273000 giây

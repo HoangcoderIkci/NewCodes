@@ -8,9 +8,9 @@
 #define U16 uint16_t
 #define U8 uint8_t
 #define loop(i, a, b) for (U32 i = a; i < b; i++)
-#define glo_n 30
+#define glo_n 20
 // const U32 glo_length = 1 << glo_n;
-#define glo_length 1073741824ULL // 20 - 1048576 // 30 1073741824  //32 4294967296
+#define glo_length 1048576ULL // 20 - 1048576 // 30 1073741824  //32 4294967296
 void supportZhegalkin(U8 *lst_coefficients, U8 idx1)
 {
     if (idx1 == glo_n)
@@ -97,18 +97,6 @@ U8 vesFunction(U32 f)
     }
     return count;
 }
-U8 *calcF1()
-{
-    U8 *table = (U8 *)malloc(sizeof(U8) * glo_length);
-    U8 vec = 0;
-    U8 hafl_length = glo_n >> 1;
-    loop(i, 0, glo_length)
-    {
-        vec = vesFunction(i);
-        table[i] = (vec >= hafl_length);
-    }
-    return table;
-}
 
 U8 *calcF2()
 {
@@ -125,27 +113,6 @@ U8 *calcF2()
     return table;
 }
 
-U8 *calcF1Supper()
-{
-    // U8 *table = (U8 *)malloc(sizeof(U8) * glo_length);
-    U8 *table = (U8 *)calloc(glo_length, sizeof(U8)); // Cấp phát bộ nhớ và khởi tạo giá trị 0 cho mảng
-
-    U8 half_n = glo_n >> 1;
-    U8 k = half_n - 1;
-    U8 buff = (1 << k) - 1;
-    U8 start = 1 << k;
-    U8 end = 1 << (k + 1);
-    while (k < glo_n)
-    {
-        loop(i, start + buff, end)
-            table[i] = 1;
-        start = end;
-        end <<= 1;
-        ++k;
-    }
-    return table;
-}
-U16 c = 0;
 U32 f = 0;
 // U8 *global_table = (U8 *)calloc(glo_length, sizeof(U8));
 // Gán giá trị 1 cho tất cả các phần tử trong mảng bằng hàm memset
@@ -178,7 +145,6 @@ void recursive(U32 t1, U16 num_loop)
             global_table[f] = 0;
             f ^= t2;
             t2 <<= 1;
-            ++c;
         }
     }
 }
@@ -187,42 +153,11 @@ void calcF1SpAuto()
     global_table[0] = 0;
     loop(t, 0, (glo_n >> 1) - 1)
     {
-        c = 0;
         recursive(glo_length, t);
         // printf("t = %u ; c = %u\n", t, c);
     }
 }
-void calcF1Sp()
-{
 
-    // U32 limit = glo_length >> 1;
-    U32 t1 = 2, t2;
-
-    while (t1 < glo_length)
-    {
-        t2 = 1;
-        while (t2 < t1)
-        {
-            printf("%u,", t2 + t1);
-            ++c;
-            t2 <<= 1;
-        }
-        t1 <<= 1;
-    }
-    printf("\n%u\n", c);
-}
-void checkF1()
-{
-    U8 *table1 = calcF1();
-    calcF1SpAuto();
-    // U8 *table2 = calcF1Supper();
-    loop(i, 0, glo_length) if (table1[i] != global_table[i])
-    {
-        printf("failed %u %u %u\n", i, table1[i], global_table[i]);
-    }
-    free(table1);
-    // free(table2);
-}
 U8 *copyArray(U8 *arr, U32 size)
 {
     U8 *arrCp = (U8 *)malloc(sizeof(U8) * size);

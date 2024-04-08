@@ -8,9 +8,9 @@
 #define U16 uint16_t
 #define U8 uint8_t
 #define loop(i, a, b) for (U32 i = a; i < b; i++)
-#define glo_n 20
+#define glo_n 24
 // const U32 glo_length = 1 << glo_n;
-#define glo_length 1048576ULL // 20 - 1048576 // 30 1073741824  //32 4294967296
+#define glo_length 16777216ULL // 16 65536ULL // 20 - 1048576 // 24 16777216ULL//28 268435456ULL // 30 1073741824  //32 4294967296
 void supportZhegalkin(U8 *lst_coefficients, U8 idx1)
 {
     if (idx1 == glo_n)
@@ -158,26 +158,6 @@ void calcF1SpAuto()
     }
 }
 
-U8 *copyArray(U8 *arr, U32 size)
-{
-    U8 *arrCp = (U8 *)malloc(sizeof(U8) * size);
-    loop(i, 0, size)
-        arrCp[i] = arr[i];
-    ////
-    return arrCp;
-}
-void printArray(int8_t *arr)
-{
-    loop(i, 0, glo_length)
-        printf("%d,", arr[i]);
-    printf("\n");
-}
-void printArray(U8 *arr)
-{
-    loop(i, 0, glo_length)
-        printf("%d,", arr[i]);
-    printf("\n");
-}
 int main()
 {
     // int8_t *table = (U8 *)malloc(sizeof(int8_t) * glo_length);

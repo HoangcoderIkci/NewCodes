@@ -1,0 +1,160 @@
+CPU 
+====================================================== F1 =================================
+N = 16
+F1: 0.000000 seconds
+
+Zhegalkin : 0.001000 seconds
+Real : 
+Fourier : 
+
+
+
+
+N = 20
+F1: 0.003000 seconds
+Zhegalkin : 0.020000 seconds
+Real : 
+Fourier :
+
+
+
+N = 24
+F1: 0.043000 seconds
+Zhegalkin : 0.353000 seconds
+Real : 
+Fourier :
+
+
+
+N = 28
+F1: 0.715000 seconds
+Zhegalkin : 6.277000 seconds
+Real : 
+Fourier :
+
+
+N = 30
+F1: 2.865000 seconds
+Zhegalkin : 27.724000 seconds
+Real : 
+Fourier :
+
+
+N = 32
+F1: 3.741000 seconds
+Zhegalkin : 28.074000 seconds
+Real : 
+Fourier :
+
+====================================================== F2 =================================
+ 
+N = 16
+F2: 0.000000 seconds
+
+Zhegalkin : 0.001000 seconds
+Real : 
+Fourier : 
+
+
+
+
+N = 20
+F2: 0.001000 seconds
+Zhegalkin : 0.020000 seconds
+Real : 
+Fourier :
+
+
+
+N = 24
+F2: 0.025000 seconds
+Zhegalkin : 0.366000 seconds
+Real : 
+Fourier :
+
+
+
+N = 28
+F2: 0.402000 seconds
+Zhegalkin : 6.496000 seconds
+Real : 
+Fourier :
+
+
+N = 30
+F2: 1.679000 seconds
+Zhegalkin : 28.447000 seconds
+Real : 
+Fourier :
+
+
+N = 32
+F2: 2.679000 seconds
+Zhegalkin : 29.54000 seconds
+Real : 
+Fourier :
+
+
+
+================================================================ GPU =================================================================
+
+====================================================== F1 =================================
+
+
+N = 28
+F1: 1.014047  seconds
+Zhegalkin : 0.508539 seconds
+Real : 0.518532
+Fourier : 0.510632
+
+
+N = 30
+F1: 4.024243 seconds
+Zhegalkin : 1.968768 seconds
+Real : 1.978763
+Fourier : 1.972751
+
+
+N = 32
+F1: 15.815638 seconds
+Zhegalkin : 4.791794 seconds
+Real : 4.801793
+Fourier : 4.811795
+
+N = 34
+F1: 63.512784 seconds
+Zhegalkin : 8.344665 seconds
+Real : 8.354263
+Fourier : 8.364462
+
+====================================================== F2 =================================
+ 
+
+N = 28
+F2: 0.002543 seconds
+Zhegalkin : 0.441436 seconds
+Real : 0.461532
+Fourier : 0.463418
+
+
+N = 30
+F2: 0.008194 seconds
+Zhegalkin : 1.633675 seconds
+Real : 1.640299
+Fourier : 1.653291
+
+
+N = 32
+F2: 0.024680 seconds
+Zhegalkin : 3.529973 seconds
+Real : 3.531672
+Fourier : 3.606691
+
+
+N = 34
+F2: 0.529677 seconds
+Zhegalkin : 5.495176 seconds
+Real : 5.520753
+Fourier : 5.525171
+
+

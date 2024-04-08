@@ -11,10 +11,10 @@
 #define I32 int32_t
 #define I16 int16_t
 #define I8 int8_t
-#define loop(i, a, b) for (U64 i = a; i < b; i++)
-#define glo_n 32
+#define loop(i, a, b) for (I64 i = a; i < b; i++)
+#define glo_n 28
 // const U32 glo_length = 1 << glo_n;
-#define glo_length 4294967296ULL // 16 65536ULL // 20 - 1048576ULL // 24 16777216ULL//28 268435456ULL // 30 1073741824ULL  //32 4294967296ULL //34 17179869184ULL
+#define glo_length 268435456ULL // 16 65536ULL // 20 - 1048576ULL // 24 16777216ULL//28 268435456ULL // 30 1073741824ULL  //32 4294967296ULL //34 17179869184ULL
 
 void fastFindCoefficientsZhegalkin(U8 *lst_coefficients)
 {
@@ -116,15 +116,14 @@ U8 *calcF2()
     U8 *table = (U8 *)malloc(sizeof(U8) * glo_length);
     table[0] = 1;
     table[1] = 0;
-    U64 current_leng = 2;
-    U8 *part2_table;
+    U32 current_leng = 2;
+    U8 *ptr;
     while (current_leng < glo_length)
     {
-        memcpy(table + current_leng, table, current_leng * sizeof(U8));
-        part2_table = table + current_leng;
+        ptr = table + current_leng;
+        memcpy(ptr, table, current_leng);
         loop(i, 0, current_leng)
-            part2_table[i] ^= 1;
-        // part2_table[i] = table[i] ^ 1;
+            ptr[i] ^= 1;
         current_leng <<= 1;
     }
     return table;
@@ -134,17 +133,17 @@ U8 *calcF2()
 U64 f = 0;
 // U8 *global_table = (U8 *)calloc(glo_length, sizeof(U8));
 // Gán giá trị 1 cho tất cả các phần tử trong mảng bằng hàm memset
-U8 *global_table;
+I8 *global_table;
 void create_dynamic_array()
 {
-    global_table = (U8 *)malloc(glo_length * sizeof(U8)); // Cấp phát bộ nhớ cho mảng
-    memset(global_table, 1, glo_length * sizeof(U8));
+    global_table = (I8 *)malloc(glo_length * sizeof(I8)); // Cấp phát bộ nhớ cho mảng
+    memset(global_table, 1, glo_length * sizeof(I8));
 }
-void recursive(U64 t1, U16 num_loop)
+void recursive(I64 t1, I16 num_loop)
 {
     if (num_loop)
     {
-        U64 t2 = 1 << num_loop;
+        I64 t2 = 1 << num_loop;
         while (t2 < t1)
         {
             f ^= t2;
@@ -155,7 +154,7 @@ void recursive(U64 t1, U16 num_loop)
     }
     else
     {
-        U64 t2 = 1;
+        I64 t2 = 1;
         while (t2 < t1)
         {
             f ^= t2;
@@ -217,8 +216,8 @@ int main()
     // giai đoạn 1 :
     start = clock();
     create_dynamic_array();
-    calcF1SpAuto();
-    // calcF2();
+    // calcF1SpAuto();
+    calcF2();
     //  U8 *table = calcF1Supper();
     //   printArray(table);
     end = clock();
@@ -228,7 +227,7 @@ int main()
 
     // giai đoạn 2
     start = clock();
-    fastFindCoefficientsZhegalkin(global_table);
+    fastFindCoefficientsReal(global_table);
     end = clock();
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Thời gian thực thi giai đoạn 2: %f giây\n", cpu_time_used);

@@ -104,10 +104,13 @@ U8 *calcF2()
     table[0] = 1;
     table[1] = 0;
     U32 current_leng = 2;
+    U8 *ptr;
     while (current_leng < glo_length)
     {
+        ptr = table + current_leng;
+        memcpy(ptr, table, current_leng);
         loop(i, 0, current_leng)
-            table[i + current_leng] = table[i] ^ 1;
+            ptr[i] ^= 1;
         current_leng <<= 1;
     }
     return table;

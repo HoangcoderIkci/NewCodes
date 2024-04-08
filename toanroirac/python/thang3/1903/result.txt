@@ -13,38 +13,38 @@ Fourier :
 N = 20
 F1: 0.003000 seconds
 Zhegalkin : 0.020000 seconds
-Real : 
-Fourier :
+Real : ~
+Fourier : ~
 
 
 
 N = 24
 F1: 0.043000 seconds
 Zhegalkin : 0.353000 seconds
-Real : 
-Fourier :
-
+Real : ~
+Fourier : 0.595000
+ 
 
 
 N = 28
 F1: 0.715000 seconds
 Zhegalkin : 6.277000 seconds
-Real : 
-Fourier :
+Real : 6.181000
+Fourier : 11.144000
 
 
 N = 30
 F1: 2.865000 seconds
 Zhegalkin : 27.724000 seconds
-Real : 
-Fourier :
+Real : 26.939000
+Fourier : 67.438000
 
 
 N = 32
-F1: 3.741000 seconds
+F1: 11.624000 seconds
 Zhegalkin : 28.074000 seconds
-Real : 
-Fourier :
+Real : 112.450000
+Fourier : 322.372000
 
 ====================================================== F2 =================================
  
@@ -52,8 +52,8 @@ N = 16
 F2: 0.000000 seconds
 
 Zhegalkin : 0.001000 seconds
-Real : 
-Fourier : 
+Real : ~
+Fourier : ~
 
 
 
@@ -61,38 +61,38 @@ Fourier :
 N = 20
 F2: 0.001000 seconds
 Zhegalkin : 0.020000 seconds
-Real : 
-Fourier :
+Real : ~
+Fourier : ~
 
 
 
 N = 24
 F2: 0.025000 seconds
 Zhegalkin : 0.366000 seconds
-Real : 
-Fourier :
+Real : ~ F1
+Fourier : ~ F1
 
 
 
 N = 28
 F2: 0.402000 seconds
 Zhegalkin : 6.496000 seconds
-Real : 
-Fourier :
+Real : ~ F1
+Fourier : ~ F1
 
 
 N = 30
 F2: 1.679000 seconds
 Zhegalkin : 28.447000 seconds
-Real : 
-Fourier :
+Real : ~ F1
+Fourier : ~ F1
 
 
 N = 32
 F2: 2.679000 seconds
 Zhegalkin : 29.54000 seconds
-Real : 
-Fourier :
+Real : ~ F1
+Fourier : ~ F1
 
 
 
@@ -141,20 +141,26 @@ N = 30
 F2: 0.008194 seconds
 Zhegalkin : 1.633675 seconds
 Real : 1.640299
-Fourier : 1.653291
+Fourier : 1.661876
 
 
 N = 32
 F2: 0.024680 seconds
 Zhegalkin : 3.529973 seconds
 Real : 3.531672
-Fourier : 3.606691
+Fourier : 3.806691
 
 
 N = 34
 F2: 0.529677 seconds
 Zhegalkin : 5.495176 seconds
 Real : 5.520753
-Fourier : 5.525171
+Fourier : 5.845204
 
 
+# Nhận xét :
+Khi dùng GPU khi tăng n thì thời gian tăng k nhiều
+
+
+1, 0, 0, 1, 0, 1, 1, 0,
+0, 1, 1, 0, 1, 0, 0, 1,

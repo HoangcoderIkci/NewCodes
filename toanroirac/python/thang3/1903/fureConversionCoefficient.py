@@ -197,7 +197,7 @@ def selectFunction(number,trustable):
     lst = [fastFindCoefficientsZhegalkin,fastFindCoefficientsReal,fastFourierTransform,fastFindWalshAdamard]
     return lst[number](trustable)
 
-str_temp = "0101001101101001"
+str_temp = "11111111"
 table = [int(x) for x in str_temp]
 
 #table = [x&0b1 for x in range(glo_length)]

@@ -12,9 +12,9 @@
 #define I16 int16_t
 #define I8 int8_t
 #define loop(i, a, b) for (I64 i = a; i < b; i++)
-#define glo_n 28
+#define glo_n 3
 // const U32 glo_length = 1 << glo_n;
-#define glo_length 268435456ULL // 16 65536ULL // 20 - 1048576ULL // 24 16777216ULL//28 268435456ULL // 30 1073741824ULL  //32 4294967296ULL //34 17179869184ULL
+#define glo_length 8 // 16 65536ULL // 20 - 1048576ULL // 24 16777216ULL//28 268435456ULL // 30 1073741824ULL  //32 4294967296ULL //34 17179869184ULL
 
 void fastFindCoefficientsZhegalkin(U8 *lst_coefficients)
 {
@@ -199,27 +199,30 @@ void printArray(int8_t *arr)
         printf("%d,", arr[i]);
     printf("\n");
 }
-// void printArray(U8 *arr)
-// {
-//     loop(i, 0, glo_length)
-//         printf("%d,", arr[i]);
-//     printf("\n");
-// }
+
 int main()
 {
     // int8_t *table = (U8 *)malloc(sizeof(int8_t) * glo_length);
-    // int8_t arrTable[] = {0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1};
+    I8 arrTable[] = {
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        -3};
     //   Code mà bạn muốn đo thời gian ở đây
     clock_t start, end;
     double cpu_time_used;
 
     // giai đoạn 1 :
     start = clock();
-    create_dynamic_array();
-    // calcF1SpAuto();
-    calcF2();
-    //  U8 *table = calcF1Supper();
-    //   printArray(table);
+    // create_dynamic_array();
+    //  calcF1SpAuto();
+    // calcF2();
+    //   U8 *table = calcF1Supper();
+    //    printArray(table);
     end = clock();
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Thời gian thực thi giai đoạn 1: %f giây\n", cpu_time_used);
@@ -227,12 +230,14 @@ int main()
 
     // giai đoạn 2
     start = clock();
-    fastFindCoefficientsReal(global_table);
+    fastFindCoefficientsFourier(arrTable);
     end = clock();
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Thời gian thực thi giai đoạn 2: %f giây\n", cpu_time_used);
     printf("\n");
+    loop(i, 0, glo_length)
+        printf("%i,", arrTable[i]);
     // printArray(arrTable);
-    free(global_table);
+    // free(global_table);
     return 0;
 }

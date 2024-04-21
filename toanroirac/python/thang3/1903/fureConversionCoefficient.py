@@ -197,7 +197,22 @@ def selectFunction(number,trustable):
     lst = [fastFindCoefficientsZhegalkin,fastFindCoefficientsReal,fastFourierTransform,fastFindWalshAdamard]
     return lst[number](trustable)
 
-str_temp = "11111111"
+"""f = 3cc3 ,currentRank = 2  f(x) = x1 + x2 + x3
+f = 5aa5 ,currentRank = 2     f(x) = x1 + x2 + x4
+f = 6699 ,currentRank = 2     f(x) = x1 + x3 + x4
+f = 6969 ,currentRank = 2     f(x) = x2 + x3 + x4  
+f = 6996 ,currentRank = 3     f(x) = x1 + x2 + x3 + x4  
+f = 9669 ,currentRank = 3     f(x) = 1 + x1 + x2 + x3 + x4  
+f = 9696 ,currentRank = 2     f(x) = 1 + x2 + x3 + x4
+f = 9966 ,currentRank = 2     f(x) = 1 + x1 + x3 + x4
+f = a55a ,currentRank = 2     f(x) = 1 + x1 + x2 + x4
+f = c33c ,currentRank = 2     f(x) = 1 + x2 + x3 + x4  
+"""  
+
+str_temp = "5aa5"
+t = 0x69
+str_temp = bin(t)[2:]
+str_temp = '0' * (8-len(str_temp)) + str_temp
 table = [int(x) for x in str_temp]
 
 #table = [x&0b1 for x in range(glo_length)]

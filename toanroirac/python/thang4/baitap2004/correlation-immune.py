@@ -1,0 +1,2 @@
+def correlationImmuneRank(trustTable):
+    pass

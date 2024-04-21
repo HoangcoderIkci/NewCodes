@@ -12,9 +12,9 @@
 #define I16 int16_t
 #define I8 int8_t
 #define loop(i, a, b) for (I64 i = a; i < b; i++)
-#define glo_n 3
+#define glo_n 28
 // const U32 glo_length = 1 << glo_n;
-#define glo_length 8 // 16 65536ULL // 20 - 1048576ULL // 24 16777216ULL//28 268435456ULL // 30 1073741824ULL  //32 4294967296ULL //34 17179869184ULL
+#define glo_length 268435456ULL // 16 65536ULL // 20 - 1048576ULL // 24 16777216ULL//28 268435456ULL // 30 1073741824ULL  //32 4294967296ULL //34 17179869184ULL
 
 void fastFindCoefficientsZhegalkin(U8 *lst_coefficients)
 {
@@ -98,6 +98,7 @@ U8 vesFunction(U64 f)
     }
     return count;
 }
+
 U8 *calcF1()
 {
     U8 *table = (U8 *)malloc(sizeof(U8) * glo_length);
@@ -133,11 +134,11 @@ U8 *calcF2()
 U64 f = 0;
 // U8 *global_table = (U8 *)calloc(glo_length, sizeof(U8));
 // Gán giá trị 1 cho tất cả các phần tử trong mảng bằng hàm memset
-I8 *global_table;
+U8 *global_table;
 void create_dynamic_array()
 {
-    global_table = (I8 *)malloc(glo_length * sizeof(I8)); // Cấp phát bộ nhớ cho mảng
-    memset(global_table, 1, glo_length * sizeof(I8));
+    global_table = (U8 *)malloc(glo_length * sizeof(U8)); // Cấp phát bộ nhớ cho mảng
+    memset(global_table, 1, glo_length * sizeof(U8));
 }
 void recursive(I64 t1, I16 num_loop)
 {
@@ -199,19 +200,42 @@ void printArray(int8_t *arr)
         printf("%d,", arr[i]);
     printf("\n");
 }
+I32 popWord(U32 x)
+{
+    x = x - ((x >> 1) & 0x55555555);
+    x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+    x = (x + (x >> 4)) & 0x0F0F0F0F;
+    x = x + (x >> 8);
+    x = x + (x >> 16);
+    return x & 0x0000003F;
+}
+U32 snoob2(U32 x)
+{
+    U32 smallest, ripple, ones; // x = xxx0 1111 0000
+    smallest = x & -x;          // 0000 0001 0000
+    ripple = x + smallest;      // xxx1 0000 0000
+    return ripple | ((1 << (popWord(x ^ ripple) - 2)) - 1);
+}
 
+void thresholdFunction()
+{
+    global_table[0] = 0;
+    U32 f = 0;
+    f = 0x1;
+    loop(i, 1, (1 + glo_n) >> 1)
+    {
+        f = (1 << i) - 1;
+        while (f < glo_length)
+        {
+            global_table[f] = 0;
+            // printf("f = %u\n", f);
+            f = snoob2(f);
+        }
+    }
+}
 int main()
 {
     // int8_t *table = (U8 *)malloc(sizeof(int8_t) * glo_length);
-    I8 arrTable[] = {
-        1,
-        1,
-        -1,
-        -1,
-        1,
-        1,
-        1,
-        -3};
     //   Code mà bạn muốn đo thời gian ở đây
     clock_t start, end;
     double cpu_time_used;
@@ -219,7 +243,7 @@ int main()
     // giai đoạn 1 :
     start = clock();
     create_dynamic_array();
-    calcF1SpAuto();
+    thresholdFunction();
     // calcF2();
     //   U8 *table = calcF1Supper();
     //    printArray(table);
@@ -228,6 +252,9 @@ int main()
     printf("Thời gian thực thi giai đoạn 1: %f giây\n", cpu_time_used);
     printf("\n");
 
+    // loop(i, 0, glo_length)
+    //     printf("%i,", global_table[i]);
+    // printf("\n");
     // giai đoạn 2
     start = clock();
     fastFindCoefficientsZhegalkin(global_table);
@@ -235,8 +262,7 @@ int main()
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Thời gian thực thi giai đoạn 2: %f giây\n", cpu_time_used);
     printf("\n");
-    loop(i, 0, glo_length)
-        printf("%i,", global_table[i]);
+
     // printArray(arrTable);
     free(global_table);
     return 0;

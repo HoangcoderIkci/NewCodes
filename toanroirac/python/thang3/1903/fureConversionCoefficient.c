@@ -151,10 +151,9 @@ void calcF1SpAuto()
 {
     global_table[0] = 0;
     f = 0;
-    loop(t, 0, (glo_n >> 1) - 1)
+    loop(t, 0, (glo_n + 1 >> 1) - 1)
     {
         recursive(glo_length, t);
-        // printf("t = %u ; c = %u\n", t, c);
     }
 }
 void calcF1supper()

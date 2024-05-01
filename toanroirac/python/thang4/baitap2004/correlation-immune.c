@@ -13,9 +13,9 @@
 #define I16 int16_t
 #define I8 int8_t
 #define loop(i, a, b) for (U64 i = a; i < b; i++)
-#define glo_n 3
+#define glo_n 4
 // const U32 glo_length = 1 << glo_n;
-#define glo_length 8
+#define glo_length 16
 void fastFindCoefficientsFourier(I8 *lst_coefficients)
 {
     U64 half_len;
@@ -90,8 +90,8 @@ I8 *findFunctionWithRankCI(U8 rank)
     U8 currentRank = 0;
     U64 maxSize = 1ULL << glo_length;
 
-    U64 start = maxSize - (maxSize >> 2);
-    loop(f, 1, maxSize)
+    U64 start = maxSize - (maxSize >> 6);
+    loop(f, start, maxSize)
     {
         f_temp = f;
         memset(trustTable, 0, glo_length);
@@ -110,7 +110,7 @@ I8 *findFunctionWithRankCI(U8 rank)
         if (currentRank >= rank)
         {
             printf("f = %llx ,currentRank = %u\n", f, currentRank);
-            break;
+            // break;
         }
     }
 
@@ -121,16 +121,19 @@ int main()
 {
     // I8 tab[4] = {0, 0, 0, 1};
     // //  1,-1,-1,1,-1,1,1,-1,-1,1,1,-1,1,-1,-1,1
-    // // I8 tab[16] = {1, -1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1};
+    I8 tab[16] = {0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1};
     // fastFindCoefficientsFourier(tab);
+    int res = rankCorrelationImmune(tab);
+    printf("%d", res);
+    printf("\n");
     // loop(i, 0, glo_n)
     //     printf("%d,", tab[i]);
     // printf("\n");
     //   U8 res = rankCorrelationImmune(tab);
-    I8 *trustTable = findFunctionWithRankCI(2);
-    loop(i, 0, glo_length)
-        printf("%d,", trustTable[i]);
-    printf("\n");
-    free(trustTable);
+    // I8 *trustTable = findFunctionWithRankCI(2);
+    // loop(i, 0, glo_length)
+    //     printf("%d,", trustTable[i]);
+    // printf("\n");
+    // free(trustTable);
     return 0;
 }

@@ -1,18 +1,17 @@
-section .data
-    hello db 'Hello, World!', 0
+DATA SEGMENT USE16
+    MESG DB 'Hello World','$'
+DATA ENDS
+CODE SEGMENT USE16
+         ASSUME CS:CODE,DS:DATA
 
-section .text
-    global _start
+    BEG: 
+         MOV    AX,DATA
+         MOV    DS,AX
+         MOV    AH,9
+         MOV    DX,OFFSET MESG
+         INT    21H
+         MOV    AH,4CH
+         INT    21H
 
-_start:
-    ; In chuỗi "Hello, World!"
-    mov eax, 4        ; syscall number for sys_write
-    mov ebx, 1        ; file descriptor 1 (stdout)
-    mov ecx, hello    ; pointer to the message
-    mov edx, 13       ; message length
-    int 0x80          ; call kernel
-
-    ; Kết thúc chương trình
-    mov eax, 1        ; syscall number for sys_exit
-    xor ebx, ebx      ; exit code 0
-    int 0x80          ; call kernel
+CODE ENDS
+END BEG

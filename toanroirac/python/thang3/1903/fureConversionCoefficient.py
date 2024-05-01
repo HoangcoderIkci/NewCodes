@@ -210,20 +210,23 @@ f = c33c ,currentRank = 2     f(x) = 1 + x2 + x3 + x4
 """  
 
 str_temp = "5aa5"
-t = 0x69
+t = 0x4000
 str_temp = bin(t)[2:]
-str_temp = '0' * (8-len(str_temp)) + str_temp
+str_temp = '0' * (16-len(str_temp)) + str_temp
 table = [int(x) for x in str_temp]
 
 #table = [x&0b1 for x in range(glo_length)]
+table = [0,1,1,0,0,1,1,0,0,1,1,0,1,0,0,1]
 print(table)
 
 # arr1 = [1,1,0,1,1,1,1,0] 
 #tableSupport = table1()
-c = selectFunction(0,table)
+c = selectFunction(3,table)
 print(c)
 
 # start_time_gpu = time.time()   
 # fastFindCoefficientsZhegalkin(table)
 # end_time_gpu = time.time()
 # print("Thời gian thực thi trên GPU:", end_time_gpu - start_time_gpu)
+
+#0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1

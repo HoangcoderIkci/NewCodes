@@ -126,15 +126,29 @@ int nlz(unsigned x)
     n = n - (x >> 31);
     return n;
 }
+
+U8 logFloor(U32 w)
+{
+    return 31 - nlz(w);
+}
+U8 logCeil(U32 w)
+{
+    return 32 - nlz(w - 1);
+}
 unsigned flp2(unsigned x)
 {
     return 0x80000000 >> nlz(x);
 }
+
+U8 bitwise(I32 w)
+{
+    w ^= (w >> 31);
+    return 33 - nlz(w);
+}
 int main() // trang 58
 {
-    unsigned x = 17;
-    I8 y = -8;
-    printf("x = %u\n", flp2(x));
+    unsigned x = 3;
+    printf("x = %u\n", bitwise(x));
     // globalTable = (U8 *)malloc(sizeof(U8) * gloLength);
     // memset(globalTable, 1, gloLength);
     // thresholdFunction();

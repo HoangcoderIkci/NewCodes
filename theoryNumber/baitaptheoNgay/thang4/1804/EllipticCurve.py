@@ -1,8 +1,8 @@
 import math
-char = 5429
+char = 851
 NOL = (char,char)
-a = 2
-b = -a
+a = 1
+b = 3
 # y^2 = x^3 + ax + b
 F  = [b,a,0,1]
 
@@ -11,6 +11,8 @@ k_global = 5184
 def Nhan_trong_module(A, B, Module):
     A = int(A)
     B = int(B)
+    A%=Module
+    B%=Module
     Module = int(Module)
     n = math.ceil(math.log(Module, 2))
     binary_list = [int(i) for i in bin(A)[2:]]
@@ -136,7 +138,7 @@ def powerPoint(point,power):
     while power:
         if power&0b1:
             res = AddTwoPoints(res,P)
-            print("power = ",power)
+            #print("power = ",power)
         P = AddTwoPoints(P,P)
         power >>=1
     return res    
@@ -150,9 +152,30 @@ def main():
     # P1 = lstPoints[1]
     # P3 = powerPoint(P1,2)
     # print(P3)
-    P = (1,1)
-    temp = powerPoint(P,k_global)
-    print(temp)
+    P = (-1,1)
+    for t in range(1,5):
+        print(1<<t)
+        P = powerPoint(P,2)
+        print(P)    
+    R = P
+    print("Part two")
+    for t in range(1,5):
+        print(1<<t)
+        R = powerPoint(R,2)
+        print(R) 
+    P1 = (189,169)
+    P2 = (313,599)
+    P3 = AddTwoPoints(P1,P2)
+    print(f"P3 = {P3}")
+
+    P4 = (191,792)
+    P3 = AddTwoPoints(P3,P4)
+    print(f"P3 = {P3}")
+    #print(temp)
+    
+    P4 = (383,538)
+    P3 = AddTwoPoints(P3,P4)
+    print(f"P3 = {P3}")
     
     
     

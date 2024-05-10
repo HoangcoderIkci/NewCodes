@@ -1,0 +1,33 @@
+Để thực hiện "Запретить редактирование реестра" (Prevent Registry Editing) và "Ограничить размер профиля пользователя значением 5 МБ" (Limit User Profile Size to 5 MB) cho một người dùng cụ thể trên Windows bằng Group Policy Editor (gpedit.msc), bạn có thể làm theo các bước sau:
+
+1. **Запретить редактирование реестра (Prevent Registry Editing)**:
+   - Mở Group Policy Editor bằng cách nhập "gpedit.msc" vào hộp thoại "Run" (Nhấn `Win + R` và nhập `gpedit.msc`).
+   - Điều hướng đến: User Configuration → Administrative Templates → System.
+   - Tìm và mở cài đặt "Prevent access to registry editing tools" (Запретить доступ к инструментам редактирования реестра).
+   - Chọn tùy chọn "Enabled" (Bật) để ngăn chặn người dùng chỉnh sửa Registry.
+   - Lưu lại cài đặt.
+
+2. **Ограничить размер профиля пользователя значением 5 МБ (Limit User Profile Size to 5 MB)**:
+   - Trong Group Policy Editor, điều hướng đến: User Configuration → Administrative Templates → System → User Profiles.
+   - Tìm và mở cài đặt "Limit profile size" (Ограничить размер профиля).
+   - Chọn tùy chọn "Enabled" và nhập giá trị 5 MB để giới hạn kích thước của hồ sơ người dùng.
+   - Lưu lại cài đặt.
+
+Sau khi hoàn tất các bước trên, chính sách sẽ được áp dụng cho người dùng cụ thể trên Windows và họ sẽ không thể chỉnh sửa Registry cũng như kích thước của hồ sơ người dùng sẽ bị giới hạn không vượt quá 5 MB. Hãy nhớ rằng việc thay đổi cài đặt Group Policy có thể ảnh hưởng đến hệ thống, vì vậy hãy chắc chắn trước khi thực hiện.
+
+Để "Запретить редактирование реестра" (Prevent Registry Editing) trong Group Policy Editor (gpedit.msc), bạn có thể thực hiện các bước sau:
+
+1. Mở Group Policy Editor:
+   - Nhấn tổ hợp phím `Win + R` để mở hộp thoại "Run".
+   - Nhập "gpedit.msc" và nhấn Enter để mở Group Policy Editor.
+
+2. Điều hướng đến cài đặt cấm chỉnh sửa Registry:
+   - Trong Group Policy Editor, đi đến: User Configuration → Administrative Templates → System.
+   - Tìm và chọn "Prevent access to registry editing tools" (Запретить доступ к инструментам редактирования реестра).
+
+3. Bật chế độ "Запретить редактирование реестра":
+   - Mở cài đặt "Prevent access to registry editing tools" bằng cách double-click vào nó.
+   - Chọn tùy chọn "Enabled" (Bật) để ngăn chặn người dùng chỉnh sửa Registry.
+   - Nhấn OK để lưu cài đặt.
+
+Sau khi hoàn thành các bước trên, chính sách "Запретить редактирование реестра" sẽ được áp dụng và người dùng sẽ không thể chỉnh sửa Registry trên máy tính của họ. Hãy nhớ rằng việc thay đổi cài đặt Group Policy có thể ảnh hưởng đến hệ thống, vì vậy hãy cẩn thận và chắc chắn trước khi thực hiện.

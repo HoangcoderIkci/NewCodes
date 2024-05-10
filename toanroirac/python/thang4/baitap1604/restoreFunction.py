@@ -3,7 +3,7 @@
     chỉnh sửa biến gloN,gloLength,sửa giá trị ban đầu tại dictIn mỗi cặp a,b trong tuple tương ứng với số cột và giá trị
     bài toán chỉ quan tâm đến tính chẵn lẻ.
 """
-gloN = 3
+gloN = 4
 gloLength = 1 << gloN
 #NameRow = ["0","1","2","3","12","13","23","123"]
 NameRow = ["0"]
@@ -56,7 +56,7 @@ def Main():
     #8,4,4,4,4,2,2,2,2,2,2,1,1,1,1,0
     A1 = [1] * gloLength
     #A2 = [8,4,4,4,4,2,2,2,2,2,2,1,1,1,1,0]
-    A2 = [4,1,1,1,0,0,0,0]
+    A2 = [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     dictIn = []
     for id in range(gloLength):
         dictIn.append((0,A2[id]&0b1))
@@ -119,7 +119,7 @@ print("result table: ")
 for key in tab:
     print(key,tab[key])
 # print(tab)
-# print(tab[NameRow[-1]])
+print(tab[NameRow[-1]])
 
 #1, 0, 0, 1, 0, 1, 1, 0,
 #0, 1, 1, 0, 1, 0, 0, 1

@@ -221,7 +221,7 @@ print(table)
 
 # arr1 = [1,1,0,1,1,1,1,0] 
 #tableSupport = table1()
-c = selectFunction(3,table)
+c = selectFunction(0,table)
 print(c)
 
 # start_time_gpu = time.time()   

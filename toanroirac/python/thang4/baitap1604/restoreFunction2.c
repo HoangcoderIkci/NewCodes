@@ -57,11 +57,6 @@ void createIndexTablesupportIndexesRow()
             supportIndexesRow[count++] = arrSupport[--count2];
         }
     }
-    // loop(round, 0, glo_length)
-    // {
-    //     printf("%x,", supportIndexesRow[round]);
-    // }
-    // printf("\n");
     free(arrSupport);
 }
 int countBitFast(U8 n)

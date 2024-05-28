@@ -13,26 +13,18 @@ arrMultiple = [[0] * SIZEPOLE for i in range(SIZEPOLE)]
 arrInverseSubtraction = [0] * SIZEPOLE
 
 
-def multipleTwoElementField(a, b):
+def multipleTwoElement(a, b):
     if a == 0 or b == 0:
         return 0
     result = 0
     temp = 1 << DEGREE
-    a_cp = 0
-    k = 0
-    t = 0
-    while b != 0:
+    while b:
         if b & 0x1:
-            t = k
-            a_cp = a
-            while t:
-                a_cp <<= 1
-                t -= 1
-                if a_cp & temp:
-                    a_cp ^= hsPole
-            result ^= a_cp
-        k += 1
+            result^=a
+        a <<= 1 
         b >>= 1
+        if a&temp:
+            a^=hsPole
     return result
 
 
